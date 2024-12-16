@@ -4,3 +4,4 @@ nltk
 transformers
 textblob
 flask_cors
+applicationinsights
