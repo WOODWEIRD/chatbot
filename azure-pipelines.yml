@@ -1,25 +1,24 @@
-# Python package
-# Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 trigger:
-- main
+  branches:
+    include:
+      - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
 
-- script: |
-    python -m venv env
-    source env/bin/activate
-    pip install -r requirements.txt
-  displayName: 'Set up Python environment'
+  - script: |
+      pip install -r requirements.txt
+    displayName: 'Set up Python environment'
 
-- script: |
-    pytest tests/
-  displayName: 'pytest'
+  - script: pytest tests/
+    displayName: 'Run tests'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(System.DefaultWorkingDirectory)'
+      artifact: 'drop'
