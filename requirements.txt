@@ -1,0 +1,6 @@
+googletrans
+flask
+nltk
+transformers
+textblob
+flask_cors
