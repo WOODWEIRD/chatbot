@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 chatbot = ChatbotAI()
 
-telemetry_client = TelemetryClient('3be60c3e-3cae-4c94-81ed-a420e0696f16;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=761e0322-d49c-4f48-85d5-265ce89b7cbe')
+telemetry_client = TelemetryClient('3be60c3e-3cae-4c94-81ed-a420e0696f16')
 
 
 @app.route("/chat", methods=["POST"])
